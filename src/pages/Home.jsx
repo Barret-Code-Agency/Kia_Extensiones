@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 import './Home.css';
@@ -222,6 +223,10 @@ export default function Home() {
                 isOpen={modalAbierto}
                 onClose={() => setModalAbierto(false)}
             />
+
+            <footer className="footer-admin-link">
+                <Link to="/admin">Panel Admin</Link>
+            </footer>
         </>
     );
 }

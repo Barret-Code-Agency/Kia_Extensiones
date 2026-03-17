@@ -12,6 +12,7 @@
     padding: 40px 36px;
     width: 100%;
     max-width: 360px;
+    margin: 0 5px;
     box-shadow: 0 8px 32px rgba(140, 82, 255, 0.12);
     display: flex;
     flex-direction: column;
