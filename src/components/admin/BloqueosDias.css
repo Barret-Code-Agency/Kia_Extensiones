@@ -1,0 +1,6 @@
+/* ===== BLOQUEOS CALENDAR ===== */
+.bloqueo-cal-day.bloqueado {
+    background: #fce4ec !important;
+    border-color: var(--rosa) !important;
+    color: var(--rosa) !important;
+}

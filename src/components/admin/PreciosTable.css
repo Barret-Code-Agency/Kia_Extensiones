@@ -1,0 +1,8 @@
+/* ===== PRECIOS TABLE ===== */
+@media (max-width: 768px) {
+    .precios-wrap p                     { font-size: 0.75rem !important; }
+    .precios-wrap h3                    { font-size: 0.85rem !important; }
+    .precios-wrap td                    { font-size: 0.72rem !important; }
+    .precios-wrap input[type="number"]  { font-size: 0.72rem !important; width: 70px !important; padding: 4px 6px !important; }
+    .precios-wrap span                  { font-size: 0.68rem !important; }
+}

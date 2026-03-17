@@ -1,0 +1,57 @@
+/* ===== CLIENT CARDS ===== */
+.cliente-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+    border-left: 4px solid var(--rosa);
+}
+
+.cliente-card h3 {
+    color: var(--lila);
+    font-family: sans-serif;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.cliente-card .cliente-meta {
+    font-size: 0.82rem;
+    color: #888;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+.cliente-historial {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.85rem;
+    font-family: sans-serif;
+}
+
+.cliente-historial th {
+    background: #f9f9f9;
+    padding: 7px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    color: #999;
+    font-weight: 600;
+}
+
+.cliente-historial td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #f5f5f5;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .cliente-card h3        { font-size: 0.86rem; }
+    .cliente-card .cliente-meta { font-size: 0.7rem; }
+    .cliente-historial      { font-size: 0.62rem !important; }
+    .cliente-historial th,
+    .cliente-historial td   { padding: 4px 5px !important; }
+    .cliente-historial .status-confirmado,
+    .cliente-historial .status-pendiente,
+    .cliente-historial .status-cancelado { font-size: 0.6rem !important; padding: 2px 6px !important; }
+}
