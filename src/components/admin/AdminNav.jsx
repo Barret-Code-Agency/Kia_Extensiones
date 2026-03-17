@@ -8,7 +8,7 @@ const ITEMS = [
     { id: 'bloqueos',  label: 'Bloquear Días',      icon: '🔒' },
 ];
 
-export default function AdminNav({ activo, onChange }) {
+export default function AdminNav({ activo, onChange, onLogout }) {
     return (
         <aside className="admin-sidebar">
             <div className="admin-sidebar-logo">Kia Extensiones</div>
@@ -26,12 +26,22 @@ export default function AdminNav({ activo, onChange }) {
                 ))}
             </nav>
 
-            <div style={{
-                marginTop: 'auto', padding: '20px',
-                fontSize: '0.75rem', color: '#ccc',
-                fontFamily: 'sans-serif', textAlign: 'center',
-            }}>
-                Panel de Administración
+            <div style={{ marginTop: 'auto', padding: '16px 20px' }}>
+                <button
+                    className="admin-nav-btn"
+                    style={{ color: '#e57373', width: '100%' }}
+                    onClick={onLogout}
+                >
+                    <span className="admin-nav-icon">🚪</span>
+                    Cerrar sesión
+                </button>
+                <div style={{
+                    fontSize: '0.75rem', color: '#ccc',
+                    fontFamily: 'sans-serif', textAlign: 'center',
+                    marginTop: '10px',
+                }}>
+                    Panel de Administración
+                </div>
             </div>
         </aside>
     );
