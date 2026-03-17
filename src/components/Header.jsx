@@ -1,4 +1,6 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
+
 export default function Header({ onAbrirCalendario }) {
     return (
         <header className="header">
@@ -11,7 +13,9 @@ export default function Header({ onAbrirCalendario }) {
                 <h1 className="brand-name">Kia Extensiones</h1>
             </div>
             <div className="logo-container">
-                <img src="/images/Solo logo.png" alt="Logo" className="logo-image" />
+                <Link to="/admin" title="Administración">
+                    <img src="/images/Solo logo.png" alt="Logo" className="logo-image" />
+                </Link>
             </div>
         </header>
     );

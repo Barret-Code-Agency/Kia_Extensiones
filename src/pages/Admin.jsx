@@ -8,6 +8,7 @@ import ClientesView  from '../components/admin/ClientesView';
 import GaleriaAdmin  from '../components/admin/GaleriaAdmin';
 import PreciosTable  from '../components/admin/PreciosTable';
 import BloqueosDias  from '../components/admin/BloqueosDias';
+import AdminLogin    from '../components/admin/AdminLogin';
 
 const SECCIONES = {
     dashboard: Dashboard,
@@ -20,8 +21,16 @@ const SECCIONES = {
 };
 
 export default function Admin() {
+    const [autenticado, setAutenticado] = useState(
+        () => sessionStorage.getItem('admin_auth') === '1'
+    );
     const [seccion, setSeccion] = useState('dashboard');
     const [mobileShowMenu, setMobileShowMenu] = useState(true);
+
+    if (!autenticado) {
+        return <AdminLogin onLogin={() => setAutenticado(true)} />;
+    }
+
     const Componente = SECCIONES[seccion];
 
     const handleChange = (id) => {
@@ -29,9 +38,14 @@ export default function Admin() {
         setMobileShowMenu(false);
     };
 
+    const handleLogout = () => {
+        sessionStorage.removeItem('admin_auth');
+        setAutenticado(false);
+    };
+
     return (
         <div className={`admin-layout ${mobileShowMenu ? 'mobile-menu' : 'mobile-content'}`}>
-            <AdminNav activo={seccion} onChange={handleChange} />
+            <AdminNav activo={seccion} onChange={handleChange} onLogout={handleLogout} />
             <main className="admin-content">
                 <button className="admin-mobile-back" onClick={() => setMobileShowMenu(true)}>
                     ← Menú
