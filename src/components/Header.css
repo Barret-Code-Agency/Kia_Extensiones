@@ -7,7 +7,7 @@
     align-items: center;
     padding: 0 50px;
     position: relative;
-    z-index: 15;
+    z-index: 5;
 }
 
 .header-left, .title-container, .logo-container {
@@ -88,6 +88,7 @@
     z-index: 10;
     object-fit: contain;
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+    pointer-events: none;
 }
 
 /* ===== RESPONSIVE ===== */
