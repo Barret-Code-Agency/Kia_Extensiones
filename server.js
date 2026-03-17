@@ -99,6 +99,56 @@ cron.schedule('0 * * * *', async () => {
     }
 });
 
+// ===== CRON: RESUMEN DIARIO AL ADMIN (21:00) =====
+cron.schedule('0 21 * * *', async () => {
+    const adminWA = process.env.ADMIN_WHATSAPP;
+    if (!adminWA) return console.log('⚠️  ADMIN_WHATSAPP no configurado, omitiendo resumen.');
+
+    const manana  = new Date();
+    manana.setDate(manana.getDate() + 1);
+    const dia = manana.getDate();
+    const mes = manana.getMonth();       // 0-indexed, igual que en Firebase
+    const año = manana.getFullYear();
+
+    try {
+        const snap   = await admin.database().ref('turnos').once('value');
+        const turnos = Object.values(snap.val() || {});
+
+        const delDia = turnos
+            .filter(t => t.dia === dia && t.mes === mes && t.año === año)
+            .sort((a, b) => (a.hora || '').localeCompare(b.hora || ''));
+
+        const fechaStr = `${dia} de ${MESES_NOMBRES[mes]} ${año}`;
+
+        if (delDia.length === 0) {
+            await enviarWhatsApp(adminWA,
+                `📅 *Resumen de mañana (${fechaStr})*\n\nNo hay turnos agendados. ¡Día libre! 🌸`
+            );
+            return;
+        }
+
+        const confirmados = delDia.filter(t => t.estado === 'confirmado');
+        const pendientes  = delDia.filter(t => t.estado === 'pendiente');
+
+        const lineas = delDia.map(t => {
+            const icono = t.estado === 'confirmado' ? '✅' : t.estado === 'cancelado' ? '❌' : '⏳';
+            return `${icono} ${t.hora}hs — *${t.cliente}* — ${t.servicio}`;
+        }).join('\n');
+
+        const msg =
+            `📅 *Resumen de mañana (${fechaStr})*\n\n` +
+            `${lineas}\n\n` +
+            `📊 Total: ${delDia.length} turno${delDia.length !== 1 ? 's' : ''} ` +
+            `(${confirmados.length} confirmado${confirmados.length !== 1 ? 's' : ''}, ` +
+            `${pendientes.length} pendiente${pendientes.length !== 1 ? 's' : ''})`;
+
+        await enviarWhatsApp(adminWA, msg);
+        console.log(`📩 Resumen diario enviado al admin (${delDia.length} turnos mañana)`);
+    } catch (err) {
+        console.error('❌ Error en resumen diario:', err);
+    }
+});
+
 // ===== NOTIFICAR ACTUALIZACIÓN DE PRECIOS =====
 app.post('/notificar-precios', async (req, res) => {
     try {
