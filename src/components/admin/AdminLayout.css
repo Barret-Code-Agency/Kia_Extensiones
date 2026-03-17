@@ -1,0 +1,114 @@
+/* ===== ADMIN SIDEBAR LAYOUT ===== */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f9f9f9;
+}
+
+.admin-sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: white;
+    border-right: 2px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.admin-sidebar-logo {
+    font-family: var(--fuente-cursiva);
+    color: var(--rosa);
+    font-size: 2rem;
+    text-align: center;
+    padding: 24px 20px 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.admin-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 24px;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.admin-nav-btn:hover {
+    background: #fff5fb;
+    color: var(--rosa);
+}
+
+.admin-nav-btn.active {
+    background: #f5f0ff;
+    color: var(--lila);
+    font-weight: bold;
+    border-left-color: var(--lila);
+}
+
+.admin-nav-icon { font-size: 1.1rem; min-width: 22px; }
+
+.admin-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.admin-mobile-back { display: none; }
+
+@media (min-width: 769px) {
+    .admin-sidebar { display: flex !important; }
+    .admin-content { display: block !important; }
+}
+
+@media (max-width: 768px) {
+    .admin-layout { flex-direction: column; }
+
+    .admin-layout.mobile-menu .admin-sidebar {
+        width: 100%;
+        min-width: unset;
+        height: 100vh;
+        position: fixed;
+        top: 0; left: 0;
+        z-index: 200;
+        box-shadow: none;
+    }
+    .admin-layout.mobile-menu .admin-content { display: none; }
+
+    .admin-layout.mobile-content .admin-sidebar { display: none; }
+    .admin-layout.mobile-content .admin-content {
+        padding: 16px;
+        min-height: 100vh;
+    }
+
+    .admin-mobile-back {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff0f8;
+        border: 1.5px solid var(--rosa);
+        border-radius: 20px;
+        color: var(--rosa);
+        font-size: 0.88rem;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: pointer;
+        padding: 6px 16px;
+        margin-bottom: 18px;
+    }
+
+    .admin-nav-btn { padding: 18px 24px; font-size: 1rem; }
+    .admin-nav-icon { font-size: 1.3rem; }
+    .admin-sidebar-logo { font-size: 2.4rem; padding: 28px 20px 22px; }
+}

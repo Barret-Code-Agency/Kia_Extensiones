@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rosa: #ff66c4;
+    --lila: #8c52ff;
+    --fuente-cursiva: 'Great Vibes', cursive;
+}
+
+/* HEADER */
+.header {
+    width: 100%;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    position: relative;
+    z-index: 5;
+}
+
+.header-left,
+.title-container,
+.logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* BOTÓN AGENDA (Bonito y Rosa) */
+.btn-agenda {
+    background-color: var(--rosa);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(236, 3, 147, 0.685);
+    transition: all 0.3s ease;
+}
+
+.btn-agenda:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 102, 196, 0.8);
+}
+
+.logo-container {
+    justify-content: flex-end;
+}
+
+.title-container {
+    justify-content: center;
+}
+
+.logo-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(236, 3, 147, 0.8);
+}
+
+.brand-name {
+    color: var(--rosa);
+    font-family: var(--fuente-cursiva);
+    font-size: 110px;
+    white-space: nowrap;
+}
+
+/* SECCIÓN ROSA CON BORDES REDONDEADOS */
+.hero-section {
+    width: 100%;
+    height: 700px;
+    background-color: var(--rosa);
+    border-radius: 80px 80px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 10;
+}
+
+.hero-text {
+    color: white;
+    font-family: var(--fuente-cursiva);
+    font-size: 120px;
+    max-width: 800px;
+    line-height: 1.1;
+    text-align: center;
+    z-index: 2;
+}
+
+.text-different {
+    color: var(--lila);
+}
+
+/* IMAGEN QUE PISA EL HEADER */
+.person-overlay {
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    height: 750px;
+    width: auto;
+    z-index: 10;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+}
+
+/* Fondo oscuro translúcido */
+.modal-overlay {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caja blanca del modal */
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--rosa);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-title {
+    font-family: var(--fuente-cursiva);
+    color: var(--lila);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.input-modal {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.input-modal:focus {
+    border-color: var(--rosa);
+}
+
+.btn-pagar {
+    width: 100%;
+    background-color: var(--rosa);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.calendar-day {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Turno Libre */
+.day-free {
+    background-color: white;
+    color: var(--rosa);
+    border: 1px solid var(--rosa);
+}
+
+.day-free:hover {
+    background-color: var(--rosa);
+    color: white;
+}
+
+/* Turno Ocupado */
+.day-busy {
+    background-color: #f0f0f0;
+    color: #ccc;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.day-selected {
+    background-color: var(--lila) !important;
+    color: white !important;
+}
+
+.hora-btn {
+    padding: 10px;
+    border: 1px solid var(--rosa);
+    border-radius: 10px;
+    background: white;
+    color: var(--rosa);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hora-btn:hover {
+    background: var(--rosa);
+    color: white;
+}
+
+.hora-btn.selected {
+    background: var(--lila);
+    color: white;
+    border-color: var(--lila);
+}
+
+.hora-busy {
+    background: #f0f0f0;
+    color: #ccc;
+    border-color: #eee;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+
+.btn-ver-trabajos {
+    display: table;
+    background-color: rgba(207, 88, 161, 0.685);
+    color: white;
+    margin-top: 70px;
+    align-content: center;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    padding: 15px 40px;
+    border: 0, 4px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin: auto;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-ver-trabajos:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+    background-color: var(--rosa);
+    filter: brightness(1.1);
+}
+
+
+.modal-galeria-content {
+    position: relative;
+    max-width: 900px;
+    width: 90%;
+    margin: auto;
+}
+
+.carrusel-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+}
+
+.slide img {
+    width: 100%;
+    height: 70vh;
+    /* Se adapta al alto de la pantalla */
+    object-fit: contain;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+}
+
+/* Botones de navegación */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover,
+.next:hover {
+    background: var(--rosa);
+}
+
+
+/* Agrega o actualiza esto en styles.css */
+#dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    /* Espacio uniforme entre los 8 puntos */
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* Si la pantalla es muy chica, se acomodan en dos filas */
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Puntos semi-transparentes */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--rosa);
+}
+
+.dot.active {
+    background-color: var(--rosa);
+    transform: scale(1.3);
+    /* El punto activo resalta */
+}
+
+/* Animación de transición */
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Contenedor General */
+.section-trabajos {
+    display: flex;
+    flex-direction: column;
+    /* Título arriba, fotos abajo */
+    align-items: center;
+    padding: 50px 0;
+    background-color: white;
+}
+
+.title-center {
+    margin-bottom: 30px;
+    font-size: 80px;
+    /* Ajustado para que sea legible */
+}
+
+.slider-main-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ventana de visualización */
+.slider-wrapper {
+    width: 1200px;
+    overflow: hidden;
+}
+
+.photos-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Estilo Base de las Cajas */
+.photo-box {
+    flex: 0 0 300px;
+    height: 500px;
+    border: 2px solid var(--rosa);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Modificador para la Foto Horizontal del Medio */
+.photo-box.horizontal {
+    flex: 0 0 500px;
+    height: 300px;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flechas Navegación */
+.nav-btn {
+    background: rgba(255, 102, 196, 0.2);
+    border: none;
+    color: var(--rosa);
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--rosa);
+    color: white;
+}

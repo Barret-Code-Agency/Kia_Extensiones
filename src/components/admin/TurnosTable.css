@@ -1,0 +1,65 @@
+/* ===== TABLA TURNOS (compartida entre AgendaView, PagosView, PreciosTable) ===== */
+.admin-container {
+    padding: 50px;
+    font-family: sans-serif;
+}
+
+.tabla-turnos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tabla-turnos th,
+.tabla-turnos td {
+    padding: 15px;
+    border: 1px solid #eee;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tabla-turnos th {
+    background-color: var(--lila);
+    color: white;
+}
+
+@media (max-width: 1099px) {
+    .tabla-turnos th,
+    .tabla-turnos td {
+        padding: 10px 8px;
+        font-size: 0.72rem;
+    }
+}
+
+.status-pendiente {
+    color: #f39c12;
+    font-weight: bold;
+    background: #fff8e1;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+}
+
+.status-confirmado {
+    color: #27ae60;
+    font-weight: bold;
+    background: #e8f5e9;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+}
+
+.status-cancelado {
+    color: #e03060;
+    font-weight: bold;
+    background: #fce4ec;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+}
+
+.info-dinero { font-size: 0.9rem; }
+.restante    { color: #c0392b; font-weight: bold; }
+.pagado      { color: #27ae60; }
