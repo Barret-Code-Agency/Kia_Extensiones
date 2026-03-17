@@ -1,0 +1,31 @@
+/* ===== EDIT TURNO MODAL ===== */
+.edit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border: 2px solid var(--lila);
+}
+
+.edit-modal-title {
+    font-family: var(--fuente-cursiva);
+    color: var(--lila);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}

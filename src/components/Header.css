@@ -1,0 +1,219 @@
+/* ===== HEADER ===== */
+.header {
+    width: 100%;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    position: relative;
+    z-index: 5;
+}
+
+.header-left, .title-container, .logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container { justify-content: flex-end; }
+.title-container { justify-content: center; }
+
+.logo-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(236, 3, 147, 0.8);
+}
+
+.brand-name {
+    color: var(--rosa);
+    font-family: var(--fuente-cursiva);
+    font-size: 110px;
+    white-space: nowrap;
+}
+
+/* BOTÓN AGENDA */
+.btn-agenda {
+    background-color: #fce4f0;
+    color: var(--rosa);
+    border: 2px solid var(--rosa);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(236, 3, 147, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-agenda:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 102, 196, 0.8);
+}
+
+/* ===== HERO ===== */
+.hero-section {
+    width: 100%;
+    height: 700px;
+    background-color: var(--rosa);
+    border-radius: 80px 80px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 10;
+}
+
+.hero-text {
+    color: white;
+    font-family: var(--fuente-cursiva);
+    font-size: 120px;
+    max-width: 800px;
+    line-height: 1.1;
+    text-align: center;
+    z-index: 2;
+}
+
+.text-different { color: var(--lila); }
+
+.person-overlay {
+    position: absolute;
+    right: 50px;
+    bottom: 0;
+    height: 750px;
+    width: auto;
+    z-index: 10;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1400px) {
+    .hero-text       { font-size: 96px; max-width: 680px; }
+    .person-overlay  { height: 680px; }
+}
+
+@media (max-width: 1200px) {
+    .hero-text       { font-size: 78px; max-width: 540px; }
+    .person-overlay  { height: 580px; }
+    .hero-section    { height: 640px; }
+}
+
+@media (max-width: 1120px) {
+    .brand-name      { font-size: 80px; }
+}
+
+@media (max-width: 1024px) {
+    .hero-text       { font-size: 62px; max-width: 440px; }
+    .person-overlay  { height: 480px; }
+    .hero-section    { height: 560px; }
+    .brand-name      { font-size: 66px; }
+}
+
+@media (max-width: 900px) {
+    .header {
+        height: auto;
+        padding: 14px 24px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+    .header-left,
+    .title-container,
+    .logo-container {
+        flex: none;
+        width: 100%;
+        justify-content: center;
+    }
+    .title-container { order: 1; }
+    .header-left     { order: 2; }
+    .logo-container  { display: none; }
+    .brand-name      { font-size: 3.5rem; white-space: normal; text-align: center; }
+    .btn-agenda      { width: 100%; }
+}
+
+@media (max-width: 860px) {
+    .hero-text       { font-size: 50px; max-width: 360px; }
+    .person-overlay  { height: 400px; }
+    .hero-section    { height: 480px; }
+}
+
+@media (max-width: 700px) {
+    .hero-section {
+        height: auto;
+        min-height: 420px;
+        border-radius: 40px 40px 0 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 24px 20px 0;
+        overflow: hidden;
+    }
+    .hero-text {
+        font-size: 2.8rem;
+        text-align: center;
+        max-width: 100%;
+        z-index: 2;
+        padding-bottom: 8px;
+    }
+    .person-overlay {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        height: 320px;
+        width: auto;
+        margin-top: 10px;
+        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        height: auto;
+        padding: 14px 16px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .header-left,
+    .title-container,
+    .logo-container {
+        flex: none;
+        width: 100%;
+        justify-content: center;
+    }
+    .header-left     { order: 3; }
+    .title-container { order: 1; }
+    .logo-container  { order: 2; width: auto; display: none; }
+    .brand-name      { font-size: 2.6rem; white-space: normal; text-align: center; }
+    .btn-agenda      { width: 100%; padding: 12px 20px; font-size: 0.95rem; border-radius: 24px; }
+    .hero-section {
+        height: auto;
+        min-height: 420px;
+        border-radius: 30px 30px 0 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 24px 20px 0;
+        overflow: hidden;
+    }
+    .hero-text {
+        font-size: 2.4rem;
+        text-align: center;
+        max-width: 100%;
+        z-index: 2;
+        padding-bottom: 8px;
+    }
+    .person-overlay {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        height: 280px;
+        width: auto;
+        margin-top: 10px;
+        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+    }
+}
